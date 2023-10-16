@@ -23,7 +23,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 // Build a Docker image using a Dockerfile
-                sh 'docker build -t mavenpipline .'
+                sh 'docker build -t abdullah919191/mavenpipline .'
             }
         }
         stage('Push to Docker Hub') {
