@@ -5,7 +5,7 @@ FROM openjdk:11-jre-slim
 WORKDIR /app
 
 # Copy your JAR file into the container (assuming it's in the same directory)
-COPY javaparser-maven-sample-1.0-SNAPSHOT.jar /app/
+COPY *.jar /app/
 
 # Specify the command to run your Java application
-CMD ["java", "-jar", "javaparser-maven-sample-1.0-SNAPSHOT.jar"]
+CMD ["java", "-jar", "*.jar"]
