@@ -17,22 +17,22 @@ pipeline {
         stage('Package JAR') {
             steps {
                 // Install the JAR file into the target directory
-                sh 'mvn install:install-file -Dfile=path/to/your.jar -DgroupId=your.group -DartifactId=your-artifact -Dversion=1.0 -Dpackaging=jar'
+                sh 'mvn package'
             }
         }
         stage('Build Docker Image') {
             steps {
                 // Build a Docker image using a Dockerfile
-                sh 'docker build -t your-image-name .'
+                sh 'docker build -t mavenpipline .'
             }
         }
         stage('Push to Docker Hub') {
             steps {
                 // Log in to Docker Hub (make sure credentials are configured in Jenkins)
-                sh 'docker login -u your-dockerhub-username -p your-dockerhub-password'
+                sh 'docker login -u abdullah919191 -p dckr_pat_raqTS6-xf-pZZ_Jiwtm3zAmyrfM'
 
                 // Push the Docker image to Docker Hub
-                sh 'docker push your-dockerhub-username/your-image-name'
+                sh 'docker push abdullah919191/mavenpipline'
             }
         }
         stage('Deploy Docker Container') {
@@ -40,7 +40,7 @@ pipeline {
                 // Deploy the Docker container to your target environment
                 // Modify this step based on your deployment method and environment
                 // Example for a local Docker host:
-                sh 'docker run -d --name your-container-name -p 80:80 your-dockerhub-username/your-image-name:latest'
+                sh 'docker run -d --name projecmaven -p 8120:80 abdullah919191/mavenpipline:latest'
             }
         }
     }
