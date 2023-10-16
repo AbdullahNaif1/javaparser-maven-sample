@@ -35,6 +35,17 @@ pipeline {
                 sh 'docker push abdullah919191/mavenpipline'
             }
         }
+         stage('Check Deploy Docker Container') {
+            steps {
+                // Stop and remove the existing container (if it exists)
+                script {
+                    try {
+                        sh 'docker stop projecmaven'
+                        sh 'docker rm projecmaven'
+                    } catch (Exception e) {
+                        // It's okay if the container doesn't exist or other errors occur
+                    }
+                }
         stage('Deploy Docker Container') {
             steps {
                 // Deploy the Docker container to your target environment
