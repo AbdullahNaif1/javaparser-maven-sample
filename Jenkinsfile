@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Package JAR') {
             steps {
-                // Install the JAR file into the target directory
+                // Package the JAR file into the target directory
                 sh 'mvn package'
             }
         }
@@ -35,7 +35,7 @@ pipeline {
                 sh 'docker push abdullah919191/mavenpipline'
             }
         }
-         stage('Check Deploy Docker Container') {
+        stage('Deploy Docker Container') {
             steps {
                 // Stop and remove the existing container (if it exists)
                 script {
@@ -46,8 +46,7 @@ pipeline {
                         // It's okay if the container doesn't exist or other errors occur
                     }
                 }
-        stage('Deploy Docker Container') {
-            steps {
+
                 // Deploy the Docker container to your target environment
                 // Modify this step based on your deployment method and environment
                 // Example for a local Docker host:
